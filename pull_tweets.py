@@ -22,37 +22,37 @@ auth.set_access_token(access_token, access_secret)
 api = tweepy.API(auth)
 
 
-query = "Tesla OR Elon"
-tweets = tweepy.Cursor(api.search, q=query,
-                       tweet_mode="extended",
-                       date_since = "2020-09-01",
-                       lang="en").items()
+# query = "Tesla OR Elon"
+# tweets = tweepy.Cursor(api.search, q=query,
+#                        tweet_mode="extended",
+#                        date_since = "2020-09-01",
+#                        lang="en").items()
 
-def tweet_text(tweet):
-    if hasattr(tweet, "retweeted_status"):
-        return tweet.retweeted_status.full_text
-    return tweet.full_text
+# def tweet_text(tweet):
+#     if hasattr(tweet, "retweeted_status"):
+#         return tweet.retweeted_status.full_text
+#     return tweet.full_text
 
-data = [[tweet.id_str,
-          tweet.created_at,
-          tweet.favorite_count,
-          tweet.retweet_count,
-          tweet.user.screen_name, 
-          tweet.user.followers_count,
-          tweet.source,
-          tweet_text(tweet)] for tweet in tweets]
+# data = [[tweet.id_str,
+#           tweet.created_at,
+#           tweet.favorite_count,
+#           tweet.retweet_count,
+#           tweet.user.screen_name, 
+#           tweet.user.followers_count,
+#           tweet.source,
+#           tweet_text(tweet)] for tweet in tweets]
 
-columns = ["id",
-            "date_time",
-            "likes", 
-            "retweets", 
-            "user", 
-            "user_followers",
-            "source",
-            "body"]
+# columns = ["id",
+#             "date_time",
+#             "likes", 
+#             "retweets", 
+#             "user", 
+#             "user_followers",
+#             "source",
+#             "body"]
 
-tweet_df = pd.DataFrame(data=data, columns=columns)
-pd.to_datetime(tweet_df["date_time"]).describe()
+# tweet_df = pd.DataFrame(data=data, columns=columns)
+# pd.to_datetime(tweet_df["date_time"]).describe()
 
 # after tesla.txt is constructed:
 
