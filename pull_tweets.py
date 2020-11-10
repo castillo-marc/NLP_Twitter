@@ -87,3 +87,6 @@ for i in range(chunks):
     batch = ids[i*50:(i+1)*50]
     result = fetch_tw(batch)
     
+    
+test = pd.read_csv("tesla_tweets.csv")
+    
